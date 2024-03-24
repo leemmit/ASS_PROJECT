@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ASS PROJECT</string>
+    <string name="to_do_tasks">To Do Tasks</string>
+    <string name="todo">TODO</string>
+    <!--    <string name="app_name">ASS PROJECT</string>-->
+    <!--    <string name="app_name">ASS PROJECT</string>-->
+    <!--    <string name="app_name">ASS PROJECT</string>-->
 </resources>
