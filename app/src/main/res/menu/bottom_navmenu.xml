@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="@string/profile"
+        android:title="@string/schedule"
         android:icon="@drawable/baseline_person_24"
-        android:id="@+id/profile"/>
+        android:id="@+id/schedule"/>
     <item
         android:title="@string/home"
         android:icon="@drawable/baseline_home_24"

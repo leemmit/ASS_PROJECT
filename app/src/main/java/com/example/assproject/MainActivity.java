@@ -2,12 +2,9 @@ package com.example.assproject;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -20,7 +17,6 @@ import com.example.assproject.Model.ToDoModel;
 import com.example.assproject.Utils.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,24 +38,47 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         setContentView(R.layout.activity_main);
 
         //-----------------------------Bottom nav-------------------------------------------------
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.BottomNavView);
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
+//
+//            int itemID = menuItem.getItemId();
+//
+//            if (itemID == R.id.home){
+//                replaceFragment(new HomeFragment(), false);
+//            } else if (itemID == R.id.settings) {
+//                replaceFragment(new SettingsFragment(), false);
+//            } else { //profile
+//                replaceFragment(new ProfileFragment(), false);
+//            }
+//            return true;
+//        });
+//
+//        replaceFragment(new HomeFragment(), true);
+        //-----------------------------Bottom nav--------------------------------------------------
+
+        //-------2---------2---------2----Bottom nav 2-------2---------2-------------2----------2-----------
         BottomNavigationView bottomNavigationView = findViewById(R.id.BottomNavView);
+        bottomNavigationView.setSelectedItemId(R.id.home);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
-
+        bottomNavigationView.setOnItemSelectedListener(menuItem -> {
             int itemID = menuItem.getItemId();
 
-            if (itemID == R.id.home){
-                replaceFragment(new HomeFragment(), false);
-            } else if (itemID == R.id.settings) {
-                replaceFragment(new SettingsFragment(), false);
-            } else { //profile
-                replaceFragment(new ProfileFragment(), false);
+            if (itemID == R.id.settings){
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                overridePendingTransition(R.anim.slide_right, R.anim.slide_left);
+                finish();
+            } else if (itemID == R.id.schedule) {
+                startActivity(new Intent(getApplicationContext(), ScheduleActivity.class));
+                overridePendingTransition(R.anim.slide_right, R.anim.slide_right);
+                finish();
+
+            } else { //home
+                return false;
             }
             return true;
         });
-
-        replaceFragment(new HomeFragment(), true);
-        //-----------------------------Bottom nav--------------------------------------------------
+        //-------2---------2---------2----Bottom nav 2-------2---------2-------------2----------2-----------
 
         mRecycleView = findViewById(R.id.recycleview);
         fab = findViewById(R.id.fab);
